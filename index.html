@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUSINESS AI TIMES 運営者 イサヤマとは何者か</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1814; --ink-mid: #4a4640; --ink-light: #8a8680;
+    --paper: #f8f6f2; --paper-warm: #efe9de; --gold: #b8996a; --line: rgba(26,24,20,0.12);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Noto Sans JP', sans-serif; font-weight: 300; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+
+  /* Hero */
+  .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(184,153,106,0.10) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(184,153,106,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+  .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 5.5vw, 2.6rem); font-weight: 300; letter-spacing: 0.05em; line-height: 1.6; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+  .hero-divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s; }
+  .hero-tagline { font-size: clamp(0.83rem, 2.5vw, 0.95rem); color: var(--ink-mid); line-height: 2.2; max-width: 340px; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+  .hero-scroll { display: flex; align-items: center; gap: 0.75rem; font-size: 10px; letter-spacing: 0.2em; color: var(--ink-light); opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s; }
+  .hero-scroll::before { content: ''; width: 40px; height: 1px; background: var(--ink-light); }
+
+  /* Sections */
+  .section { padding: 5rem 2rem; max-width: 480px; margin: 0 auto; }
+  .section-label { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+  .section-title { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 0.03em; margin-bottom: 1.5rem; line-height: 1.7; }
+
+  /* Story */
+  .story-block { border-left: 2px solid var(--gold); padding-left: 1.25rem; margin-bottom: 1.75rem; }
+  .story-text { font-size: 0.87rem; color: var(--ink-mid); line-height: 2.3; }
+  .story-text + .story-text { margin-top: 0.9rem; }
+
+  /* Stats */
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 2rem; }
+  .stat-item { background: var(--paper); padding: 1.25rem 1rem; text-align: center; }
+  .stat-num { font-family: 'Noto Serif JP', serif; font-size: 1.6rem; font-weight: 300; color: var(--gold); display: block; line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-size: 10px; color: var(--ink-light); letter-spacing: 0.05em; }
+
+  .timeline { list-style: none; }
+  .timeline li { font-size: 0.82rem; color: var(--ink-mid); padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; gap: 0.75rem; align-items: baseline; }
+  .timeline li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.7rem; }
+
+  /* Books */
+  .books-wrap { background: var(--paper-warm); padding: 5rem 2rem; }
+  .books-inner { max-width: 480px; margin: 0 auto; }
+  .books-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .book-card { display: flex; flex-direction: column; gap: 0.5rem; text-decoration: none; }
+  .book-cover { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: 1px solid var(--line); display: block; }
+  .book-title { font-size: 10px; color: var(--ink-mid); line-height: 1.6; }
+  .book-badge { font-size: 9px; letter-spacing: 0.05em; color: var(--gold); }
+
+  /* YouTube */
+  .yt-wrap { padding: 5rem 2rem; }
+  .yt-inner { max-width: 480px; margin: 0 auto; }
+  .yt-card { border: 1px solid var(--line); padding: 1.75rem; background: var(--paper); display: flex; flex-direction: column; gap: 1rem; }
+  .yt-header { display: flex; align-items: center; gap: 1rem; }
+  .yt-icon { width: 48px; height: 48px; background: #FF0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .yt-name { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 400; }
+  .yt-handle { font-size: 11px; color: var(--ink-light); letter-spacing: 0.05em; }
+  .yt-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 2; }
+  .yt-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #FF0000; color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; font-size: 0.82rem; letter-spacing: 0.08em; border-radius: 4px; transition: opacity 0.2s ease; width: fit-content; }
+  .yt-btn:hover { opacity: 0.85; }
+
+  /* Consultation bridge */
+  .bridge-wrap { background: var(--ink); padding: 5rem 2rem; }
+  .bridge-inner { max-width: 480px; margin: 0 auto; }
+  .bridge-label { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+  .bridge-title { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 300; color: var(--paper); letter-spacing: 0.05em; line-height: 1.8; margin-bottom: 1.5rem; }
+  .bridge-text { font-size: 0.87rem; color: rgba(248,246,242,0.65); line-height: 2.3; margin-bottom: 2rem; }
+
+  /* Services */
+  .services-wrap { padding: 5rem 2rem; }
+  .services-inner { max-width: 480px; margin: 0 auto; }
+  .service-card { border: 1px solid var(--line); padding: 1.75rem; margin-bottom: 0.75rem; background: var(--paper); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(26,24,20,0.07); }
+  .service-number { font-size: 9px; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.6rem; }
+  .service-name { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; font-weight: 400; margin-bottom: 0.75rem; }
+  .service-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 2; }
+  .service-tags { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag { font-size: 10px; color: var(--ink-mid); border: 1px solid var(--line); padding: 2px 10px; }
+
+  /* CTA */
+  .cta-section { padding: 5rem 2rem; max-width: 480px; margin: 0 auto; text-align: center; }
+  .cta-headline { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.08em; line-height: 1.9; margin-bottom: 1rem; }
+  .cta-sub { font-size: 0.83rem; color: var(--ink-mid); line-height: 2.2; margin-bottom: 2.5rem; }
+  .cta-btn { display: flex; align-items: center; justify-content: center; gap: 0.75rem; background: #06C755; color: #fff; text-decoration: none; padding: 1.1rem 2.5rem; font-size: 0.9rem; letter-spacing: 0.08em; border-radius: 4px; transition: opacity 0.2s ease, transform 0.2s ease; max-width: 300px; margin: 0 auto; }
+  .cta-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+  .cta-note { font-size: 0.72rem; color: var(--ink-light); margin-top: 1rem; letter-spacing: 0.06em; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem; text-align: center; font-size: 0.72rem; color: var(--ink-light); letter-spacing: 0.1em; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Hero：誰？という問い -->
+<section class="hero">
+  <p class="hero-eyebrow">BUSINESS AI TIMES 運営者</p>
+  <h1 class="hero-title">
+    月1,298万回再生の<br>
+    メディアをつくっている<br>
+    イサヤマとは何者か。
+  </h1>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">
+    銀行員・事業再生コンサル・M&Aを経て、<br>
+    現在は複数の事業を経営しながら<br>
+    BUSINESS AI TIMESを運営しています。<br>
+    書籍4冊、節税対策、不動産、そしてキャリア支援。
+  </p>
+  <p class="hero-scroll">Scroll to learn more</p>
+</section>
+
+<!-- Intro -->
+<section class="section">
+  <p class="section-label reveal">はじめに</p>
+  <h2 class="section-title reveal">匿名アカウントの中の人が、<br>自己紹介をします。</h2>
+  <div class="story-block reveal">
+    <p class="story-text">こんにちは。BUSINESS AI TIMESを運営しているイサヤマと申します。</p>
+    <p class="story-text">Instagramを見て「なんだか匿名で怪しいアカウントだな」と感じた方もいるかもしれません。フォロワー数が増えるにつれて、いったいどんなことを提供したら良いのだろうと、私自身も日々考えていました。</p>
+    <p class="story-text">ベタに情報商材を売るようなことは極力避けたい。それよりも、私の得意なことや実績のあることを、信頼してくださった方々に提供できれば良いのではないかと考えています。このページでは、そういう人間がやっていますよ、ということをお伝えします。</p>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="section" style="padding-top:0;">
+  <p class="section-label reveal">Story</p>
+  <h2 class="section-title reveal">お金の問題が、家族をこわす。<br>その現実を子どもの頃に見た。</h2>
+
+  <div class="story-block reveal">
+    <p class="story-text">シングルマザーの母のもとで育った。母が再婚した後、義理の父とのお金のトラブルが絶えなかった。言い争いは続き、やがて義理の父は自己破産した。</p>
+    <p class="story-text">お金の問題が夫婦関係を壊し、夫婦関係の悪化が子どもたちの毎日を変えていく。その連鎖を、すぐそばで見ていた。それが、お金とキャリアに真剣に向き合うようになった原点だ。</p>
+  </div>
+
+  <div class="story-block reveal">
+    <p class="story-text">だから銀行員になった。法人融資・資産形成・財務分析を徹底的に学んだ。その後は事業再生コンサルとして、資金繰りが限界を超えた企業の財務を立て直す現場に10案件以上携わった。倒産寸前の会社のバランスシートと向き合い続けた経験は、ファイナンスの知識を実戦で叩き込んでくれた。M&A・新規事業を経て、現在は複数の事業を経営しながらBUSINESS AI TIMESを運営している。</p>
+  </div>
+
+  <div class="stats-grid reveal">
+    <div class="stat-item">
+      <span class="stat-num">150+</span>
+      <span class="stat-label">キャリア相談実績</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">10+</span>
+      <span class="stat-label">事業再生案件経験</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4冊</span>
+      <span class="stat-label">商業出版・ベストセラー</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1,298万</span>
+      <span class="stat-label">月間リール再生数</span>
+    </div>
+  </div>
+
+  <ul class="timeline reveal">
+    <li>みずほ銀行（法人営業・資産形成支援）</li>
+    <li>独立系事業再生コンサルティングファーム</li>
+    <li>ITベンチャー社長室（M&A・新規事業）</li>
+    <li>生成AI書籍 著者（Amazon複数部門1位）</li>
+    <li>不動産事業・経営者向け支援 経営</li>
+  </ul>
+</section>
+
+<!-- Books -->
+<div class="books-wrap">
+  <div class="books-inner">
+    <p class="section-label reveal">Books</p>
+    <h2 class="section-title reveal" style="margin-bottom:1.75rem;">SBクリエイティブより商業出版<br>Amazon複数カテゴリで1位獲得</h2>
+    <div class="books-grid">
+      <a class="book-card reveal" href="https://amzn.to/4cWoDt8" target="_blank" rel="noopener">
+        <img class="book-cover" src="AIで価値.jpg" alt="AIで価値を生み出す思考と技術">
+        <span class="book-badge">最新刊</span>
+        <span class="book-title">AIで価値を生み出す思考と技術</span>
+      </a>
+      <a class="book-card reveal" href="https://amzn.to/4sQytl7" target="_blank" rel="noopener">
+        <img class="book-cover" src="Dify②.jpg" alt="Dify徹底活用ガイド 実践編">
+        <span class="book-badge">Amazonジャンル別1位</span>
+        <span class="book-title">【実践編】Dify 徹底活用ガイド</span>
+      </a>
+      <a class="book-card reveal" href="https://amzn.to/4dXOCS1" target="_blank" rel="noopener">
+        <img class="book-cover" src="Dify①.jpg" alt="Dify徹底活用ガイド 入門">
+        <span class="book-badge">Amazonジャンル別1位</span>
+        <span class="book-title">【入門】Dify 徹底活用ガイド</span>
+      </a>
+      <a class="book-card reveal" href="https://amzn.to/494mUQ3" target="_blank" rel="noopener">
+        <img class="book-cover" src="ChatGPT.jpg" alt="ChatGPT ビジネス活用アイディア事典">
+        <span class="book-badge"></span>
+        <span class="book-title">ChatGPT ビジネス活用アイディア事典</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- YouTube -->
+<div class="yt-wrap">
+  <div class="yt-inner">
+    <p class="section-label reveal">YouTube</p>
+    <h2 class="section-title reveal" style="margin-bottom:1.25rem;">事業再生・キャリアの<br>リアルを発信中</h2>
+    <div class="yt-card reveal">
+      <div class="yt-header">
+        <div class="yt-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <span class="yt-name">ISSAのビジネスラボラトリー</span>
+          <span class="yt-handle">@ISSAbusinesslabo</span>
+        </div>
+      </div>
+      <p class="yt-desc">元事業再生コンサルタントによる、20〜30代のキャリア情報を発信。銀行員・コンサル・ファンドへの転職の進め方、事業再生の実態、ビジネスの裏側をリアルに解説しています。「とにかく稼ぎたい」「激務でもいいから市場価値を上げたい」という方におすすめのキャリアを紹介中。</p>
+      <a class="yt-btn" href="https://www.youtube.com/@ISSAbusinesslabo" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        チャンネルを見る
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Bridge：ここで初めて「相談」が出てくる -->
+<div class="bridge-wrap">
+  <div class="bridge-inner">
+    <p class="bridge-label reveal">Contact</p>
+    <h2 class="bridge-title reveal">
+      実は、お金とキャリアの<br>
+      相談も受けています。
+    </h2>
+    <p class="bridge-text reveal">
+      書籍や実績を見てくださった方から、「相談したい」というご連絡をいただくことが増えました。銀行員・コンサル・事業再生・M&Aを経てきた視点で、売り込みなしに話を聞きます。興味のある方はLINEから気軽にどうぞ。
+    </p>
+  </div>
+</div>
+
+<!-- Services -->
+<div class="services-wrap">
+  <div class="services-inner">
+    <p class="section-label reveal">相談できること</p>
+
+    <div class="service-card reveal">
+      <p class="service-number">01</p>
+      <h3 class="service-name">【経営者向け】節税・資金計画の相談</h3>
+      <p class="service-desc">役員社宅・旅費規程・企業型DC・アート節税・保険活用など、経営者が使える節税手法の相談を無料でお受けします。資金計画や財務戦略のサポートも対応します。信頼できる専門家へのご紹介も可能です。</p>
+      <div class="service-tags">
+        <span class="tag">役員社宅</span><span class="tag">旅費規程</span><span class="tag">企業型DC</span><span class="tag">アート節税</span><span class="tag">保険活用</span><span class="tag">資金計画</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <p class="service-number">02</p>
+      <h3 class="service-name">【会社員向け】キャリアの相談</h3>
+      <p class="service-desc">転職・独立・副業など、キャリアにまつわる相談をお受けします。今の仕事を続けるべきか迷っている方、年収を上げたい方、方向性が定まらない方まで。銀行・コンサル・事業会社を経た目線で、一緒に整理します。累計150名以上の相談実績があります。</p>
+      <div class="service-tags">
+        <span class="tag">転職相談</span><span class="tag">年収アップ</span><span class="tag">独立・副業</span><span class="tag">キャリア設計</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <p class="service-number">03</p>
+      <h3 class="service-name">【全般】不動産の売買・賃貸に関する相談</h3>
+      <p class="service-desc">不動産の購入・売却・賃貸など、住まいにまつわる相談をお受けします。売り込みはしません。私自身、自宅の購入や不動産投資の経験があり、失敗経験もあります。FPとしての知識だけでなく、銀行員・事業再生・M&Aで培った財務視点も交えながら、自分ごととして一緒に整理します。サラリーマンの節税についても興味があればお話しします。</p>
+      <div class="service-tags">
+        <span class="tag">売買相談</span><span class="tag">賃貸</span><span class="tag">住み替え</span><span class="tag">不動産投資</span><span class="tag">失敗談あり</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="line">
+  <p class="section-label reveal" style="text-align:center;">LINE登録</p>
+  <h2 class="cta-headline reveal">まず、話してみてください。</h2>
+  <p class="cta-sub reveal">
+    相談は無料です。売り込みもしません。<br>
+    LINEでメッセージをいただければ、<br>
+    48時間以内にご返信します。<br><br>
+    LINE登録者には限定特典もお渡ししています。
+  </p>
+  <a href="https://lin.ee/oHt2Rxy" class="cta-btn reveal">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    LINE で無料相談する
+  </a>
+  <p class="cta-note reveal">BUSINESS AI TIMES 運営者　イサヤマ</p>
+</section>
+
+<footer>© 2025 BUSINESS AI TIMES. All rights reserved.</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
